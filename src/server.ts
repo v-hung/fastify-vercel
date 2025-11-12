@@ -57,8 +57,13 @@ app.register(swaggerUi, {
 });
 
 app.register(cors, {
-  origin: "http://localhost:9090",
+  origin: (origin, callback) => {
+    // Luôn gọi callback(null, true) để chấp nhận mọi Origin
+    // và phản hồi lại bằng Origin chính xác mà client đã gửi.
+    callback(null, true);
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 });
 
