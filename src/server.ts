@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
+import cors from "@fastify/cors";
 import {
   jsonSchemaTransform,
   jsonSchemaTransformObject,
@@ -53,6 +54,12 @@ app.register(swaggerUi, {
     docExpansion: "list",
     deepLinking: false,
   },
+});
+
+app.register(cors, {
+  origin: "http://localhost:9090",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 });
 
 app.register(jwtPlugin);
