@@ -75,14 +75,14 @@ export const register = async (
     role: created.role ?? "",
   });
 
-  reply.send({ token, created });
+  reply.send({ token, user: created });
 };
 
 export const update = async (
   req: FastifyRequest<{ Body: typeof users.$inferInsert }>,
   reply: FastifyReply
 ) => {
-  const { email, password, ...rest } = req.body;
+  const { id, email, password, ...rest } = req.body;
 
   const [user] = await db.select().from(users).where(eq(users.email, email));
 

@@ -41,7 +41,7 @@ async function routes(app: FastifyInstance) {
       schema: {
         body: loginBodySchema,
         response: {
-          200: userSelectSchema,
+          200: loginResponseSchema,
         },
       },
     },
