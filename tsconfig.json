@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"noEmit": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "./dist"
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/helper/router"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
