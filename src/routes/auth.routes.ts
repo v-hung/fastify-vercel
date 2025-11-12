@@ -4,7 +4,7 @@ import {
   loginBodySchema,
   loginResponseSchema,
 } from "../schemas/auth/login.schema.js";
-import { userSelectSchema } from "../db/schema/index.js";
+import { userSelectSchema, userUpdateSchema } from "../db/schema/index.js";
 import { securitySchema } from "../utils/router.utils.js";
 
 async function routes(app: FastifyInstance) {
@@ -33,6 +33,32 @@ async function routes(app: FastifyInstance) {
       onRequest: [app.auth],
     },
     authController.load
+  );
+
+  app.post(
+    "/register",
+    {
+      schema: {
+        body: loginBodySchema,
+        response: {
+          200: userSelectSchema,
+        },
+      },
+    },
+    authController.register
+  );
+
+  app.put(
+    "/update",
+    {
+      schema: {
+        body: userUpdateSchema,
+        response: {
+          200: userSelectSchema,
+        },
+      },
+    },
+    authController.update
   );
 }
 
